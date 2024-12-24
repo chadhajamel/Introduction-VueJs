@@ -12,6 +12,9 @@
       <li v-for="todo in sortedTodos()" :key="todo.date">
         <input type="checkbox" v-model="todo.done"/>
         <span :style="{textDecoration: todo.done ? 'line-through' : 'none'}">{{todo.title}}</span>
+
+        <!-- autre methode -->
+        <!-- <checkbox :label="todos.title" ></checkbox> -->
       </li>
     </ul>
 
@@ -20,8 +23,18 @@
         <input type="checkbox" v-model="hideComplete">Masquer les taches completes
         </input>
       </label>
-   
     </div>
+
+    <!-- checkbox with componenrt input -->
+    <checkbox label="bonjour chadhou" ></checkbox>
+
+    <!-- checkbox with componenrt evenemet -->
+    <checkbox label="event" @checked="console.log('ggg')" @unchecked="console.log('ttt')" 
+    ></checkbox>
+
+
+
+
 
   </div>
 
@@ -29,6 +42,7 @@
 
 <script setup> 
 import { ref } from 'vue'
+import checkbox from './components/checkbox.vue'
 const newTodo = ref('')
 const todos = ref([
   {title:'Apprendre Vue 3', done:true, date: Date.now()},
